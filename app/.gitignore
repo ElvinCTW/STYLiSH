@@ -1,0 +1,5 @@
+*.crt
+*.key
+.env
+node_modules
+config.json

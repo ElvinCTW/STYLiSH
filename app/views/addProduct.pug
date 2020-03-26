@@ -1,0 +1,73 @@
+extends stylish_layout.pug
+block content
+    h1 Add new product
+    form(action="/admin/addProduct" method="post" enctype="multipart/form-data" id="addProductForm")
+        label 必填
+        br
+        label ID : 
+        input(id="product_id" type="number" name="product_id" placeholder="0123456789" min="0" max="9999999999" required)
+        br
+        label Title : 
+        input(id="title" type="text" name="title" placeholder="好棒棒開襠褲" required)
+        br
+        label Price : 
+        input(id="price" type="number" name="price" placeholder="$$$$$" min="0" max="9999999999" required)
+        br
+        label 選填
+        br
+        label Description : 
+        input(id="description" type="text" name="description" placeholder="好棒棒國的國民服飾")
+        br
+        label Texture : 
+        input(id="texture" type="text" name="texture" placeholder="不好說")
+        br
+        label Wash : 
+        input(id="wash" type="text" name="wash" placeholder="請用液態氮清洗")
+        br
+        label Place : 
+        input(id="place" type="text" name="place" placeholder="韓國人說都是他們的")
+        br 
+        label Note : 
+        input(id="note" type="text" name="note" placeholder="不防火，請勿當柴燒")
+        br
+        label Story : 
+        input(id="story" type="text" name="story" placeholder="好棒棒村的古老傳奇")
+        br
+        label Type : 
+        input(id="type" type="text" name="type" placeholder="type")
+        br
+        label Hot : 
+        input(id="hot" type="text" name="hot" placeholder="hot")
+        br
+        label 庫存資訊
+        br
+        label Colors :
+        input(id="colors" type="text" name="colors" placeholder="white,black")
+        br
+        label ColorsCode : 
+        input(id="colorscode" type="text" name="colorscode" placeholder="FFFFFF,000000")
+        br
+        label Sizes : 
+        input(id="sizes" type="text" name="sizes" placeholder="xs, s, m, l, xl")
+        br
+        label SizesInfo : 
+        input(id="sizesinfo" type="text" name="sizesinfo" placeholder="特小, 小, 中, 大, 特大")
+        br
+        label(id="variantsLabel") Variants : 
+        div(id="totalvariants")
+        button(type="button" id="addVariantsButton" onclick="addVariants()") 填好顏色、大小後點我
+        br
+        p Main image
+        input(id="main_image" type="file" name="main_image")
+        br
+        p Images (up to 3)
+        input(id="images" type="file" name="images" multiple)
+        br
+        button(type="submit" id="submitButton" style="display: none;") Submit!
+    script(src="/public/JS/product.js")
+
+        
+
+
+
+

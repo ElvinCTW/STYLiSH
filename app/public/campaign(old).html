@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">
+    <title>Campaign Management Page</title>
+</head>
+<body>
+    <h1>Add new campaign</h1>
+    <form action="/admin/addCampaign" method="post" enctype="multipart/form-data" id="addCampaignForm">
+        <!-- <label>Product_ID : </label><a href="http://3.134.125.243/api/V1.0/products" target="_blank" id="getID">Get test ID here</a><br> -->
+        <label>Product_ID : </label><a href="http://localhost:3000/api/V1.0/products" target="_blank" id="getID">Get test ID here</a><br>
+        <input id="product_id" type="number" name="product_id" placeholder="0123456789" min="0" max="9999999999" required/><br>
+        <label>Story : </label><br>
+        <input id="story" type="text" name="story" placeholder="輸入故事"/><br>
+        <label>Picture : </label><br>
+        <input id="picture" type="file" name="picture"/><br>
+        <button type="submit" id="submitButton">Submit!</button>
+    </form>
+</body>
+</html>

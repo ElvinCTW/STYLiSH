@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+    <script>
+        window.fbAsyncInit = function() {
+        FB.init({
+        appId: 1195236887352902, // 填入 FB APP ID
+        cookie: true,
+        xfbml: true,
+        version: 'v5.0'
+        });
+        
+        FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+        });
+        };
+        
+        // 處理各種登入身份
+        function statusChangeCallback(response) {
+        console.log(response);
+        var target = document.getElementById("FB_STATUS_1"),
+        html = "";
+        
+        // Send data to express
+        const FB_token_input_DOM = document.getElementById('FB_token');
+        FB_token_input_DOM.value = response.authResponse.accessToken;
+        document.forms["FB_form"].submit();
+        
+
+        // 登入 FB 且已加入會員
+        if (response.status === 'connected') {
+        html = "已登入 FB";
+        
+        }
+        
+        }
+        
+        function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+        });
+        }
+        
+        // 載入 FB SDK
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</head>
+<body>
+    <h1>你是不是想登入</h1>
+    <form action="/api/V1.0/user/signin" method="post" id='FB_form' style="display: none;">
+        <input id="provider" type="text" name="provider" placeholder="" value="facebook" style="display: none;"/>
+        <input id="FB_token" type="text" name="access_token" style="display: none;"/><br>
+    </form>
+    <form action="/api/V1.0/user/signup" method="post" style="display: none;" id="signUpForm" enctype="multipart/form-data">
+        <input id="provider" type="text" name="provider" placeholder="" value="native" style="display: none;"/>
+        <label>Email：</label><input id="email" type="email" name="email" placeholder="Email拉進來"/><br>
+        <label>怕死我的：</label><input id="password" type="password" name="password" placeholder="密碼打出去"/><br>
+        <label>你的名字：</label><input id="name" type="test" name="name" placeholder="鬼塚英吉"/><br>
+        <label>照片：</label><input id="picture" type="file" name="picture"/><br>
+        <button type="submit" id="signin_btn">註冊發大財</button>
+    </form>
+    <form action="/api/V1.0/user/signin" method="post" id="signInForm">
+        <input id="provider" type="text" name="provider" placeholder="" value="native" style="display: none;"/>
+        <label>Email：</label><input id="email" type="email" name="email" placeholder="Email拉進來"/><br>
+        <label>怕死我的：</label><input id="password" type="password" name="password" placeholder="密碼打出去"/><br>
+        <button type="submit" id="signin_btn">登入發大財</button>
+    </form>
+    <!-- Switch between signin / sign up -->
+    <button id="switchBtn" onclick="signSwitch()">我要註冊</button>
+    <fb:login-button 
+    scope="public_profile,email" 
+    autologoutlink="true" 
+        onlogin="checkLoginState();">
+    </fb:login-button>
+    <span id="FB_STATUS_1"></span>
+    <script>
+        // Switch function components
+        const switchBtn = document.getElementById('switchBtn');
+        const signUpForm = document.getElementById('signUpForm');
+        const signInForm = document.getElementById('signInForm');
+        const header = document.getElementsByTagName('h1')[0];
+        let signInstate = true;
+        
+        // Switch sign-in / sign-up function
+        function signSwitch() {
+            if (signInstate === true) {
+                signUpForm.style.display = '';
+                signInForm.style.display = 'none';
+                signInstate = false;
+                switchBtn.textContent = '我要登入'
+                header.textContent = '你是不是想註冊'
+            } else {
+                signUpForm.style.display = 'none';
+                signInForm.style.display = '';
+                signInstate = true;
+                switchBtn.textContent = '我要註冊'
+                header.textContent = '你是不是想登入'
+            }
+        }
+    </script>
+</body>
+</html>
