@@ -68,6 +68,4 @@ app.use('/api/V1.0/user/', signAPIRoutes);
 const checkoutAPIRoutes = require('./routes/checkoutAPI');
 app.use('/api/V1.0/order/', checkoutAPIRoutes);
 
-app.listen(3000, () => {
-    console.log('yo we are in the aws server');
-});
+app.listen(3000, () => {});

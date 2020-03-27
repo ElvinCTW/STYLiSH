@@ -104,8 +104,12 @@ function createMoreItems() {
 
             if ((typeof page) === 'undefined') {
                 // Hide button
-                const nomoreMessage = $('<h1></h1>').text('No more products');
-                $('#main').append(nomoreMessage);
+                if ($('#no-more').length === 0) {
+                    const nomoreMessage = $('<h3 />')
+                        .attr('id', 'no-more')
+                        .text('No more products');
+                    $('#main').append(nomoreMessage);
+                }
             }
         };
         getMoreRequest.send();

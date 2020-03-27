@@ -1,17 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 const mysql = require('mysql');
-// const con = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     // how to use pwd safely? => dotenv
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME,
-// });
-// con.connect(function (err) {
-//     if (err) reject(err);
-//     // // console.log("connect to DB");
-// });
 
 const con = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -23,7 +12,7 @@ con.connect(function (err) {
     if (err) {
         throw err;
     } else {
-        console.log('Connected!');
+        console.log('MySQL server connected!');
     }
 });
 

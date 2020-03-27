@@ -31,7 +31,7 @@ productDetailRequest.onload = function(sendback) {
         // Make color child nodes
         const newColorChildNode = document.createElement('div');
         newColorChildNode.className = 'main-content-color-block-child';
-        newColorChildNode.style.backgroundColor = sendbackJSON.data.colors[i].code;
+        newColorChildNode.style.background = '#'+sendbackJSON.data.colors[i].code;
         colorParentNode.appendChild(newColorChildNode);
     }
     // Sizes

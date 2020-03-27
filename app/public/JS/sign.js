@@ -6,51 +6,51 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable require-jsdoc */
 if (!localStorage.getItem('stylish_token')) {
-    // No token, call userSign API
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: 1195236887352902, // 填入 FB APP ID
-            cookie: true,
-            xfbml: true,
-            version: 'v5.0',
-        });
+    // // No token, call userSign API
+    // window.fbAsyncInit = function () {
+    //     FB.init({
+    //         appId: 1195236887352902, // 填入 FB APP ID
+    //         cookie: true,
+    //         xfbml: true,
+    //         version: 'v5.0',
+    //     });
 
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    };
+    //     FB.getLoginStatus(function (response) {
+    //         statusChangeCallback(response);
+    //     });
+    // };
 
-    // 處理各種登入身份
-    function statusChangeCallback(response) {
-        console.log(response);
-        var target = document.getElementById('FB_STATUS_1'),
-            html = '';
+    // // 處理各種登入身份
+    // function statusChangeCallback(response) {
+    //     console.log(response);
+    //     var target = document.getElementById('FB_STATUS_1'),
+    //         html = '';
 
-        // Send data to express
-        const FB_token_input_DOM = document.getElementById('FB_token');
-        FB_token_input_DOM.value = response.authResponse.accessToken;
-        document.forms['FB_form'].submit();
+    //     // Send data to express
+    //     const FB_token_input_DOM = document.getElementById('FB_token');
+    //     FB_token_input_DOM.value = response.authResponse.accessToken;
+    //     document.forms['FB_form'].submit();
 
-        // 登入 FB 且已加入會員
-        if (response.status === 'connected') {
-            html = '已登入 FB';
-        }
-    }
-    function checkLoginState() {
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    }
+    //     // 登入 FB 且已加入會員
+    //     if (response.status === 'connected') {
+    //         html = '已登入 FB';
+    //     }
+    // }
+    // function checkLoginState() {
+    //     FB.getLoginStatus(function (response) {
+    //         statusChangeCallback(response);
+    //     });
+    // }
 
-    // 載入 FB SDK
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/zh_TW/sdk.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+    // // 載入 FB SDK
+    // (function (d, s, id) {
+    //     var js, fjs = d.getElementsByTagName(s)[0];
+    //     if (d.getElementById(id)) return;
+    //     js = d.createElement(s);
+    //     js.id = id;
+    //     js.src = 'https://connect.facebook.net/zh_TW/sdk.js';
+    //     fjs.parentNode.insertBefore(js, fjs);
+    // }(document, 'script', 'facebook-jssdk'));
 
     // Switch function components
     const switchBtn = document.getElementById('switchBtn');

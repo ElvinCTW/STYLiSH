@@ -32,9 +32,7 @@ if (comeinToken) {
             $('#clean-token-btn').before(signinMessage, id, provider, name, email);
         },
         error: (err)=>{
-            alert(err.responseJSON.errorMessage);
             $('#profile-errorMessage').text('Can not get profile : ' + err.responseJSON.errorMessage);
-            alert('error of profile API');
             $('#clean-token-btn').click(()=>{
                 // Clean token in localStorage
                 localStorage.removeItem('stylish_token');
