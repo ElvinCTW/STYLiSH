@@ -21,7 +21,12 @@ if (location.search.split('=')[0] === '?type') {
 let page = 0;
 // ajax
 
-createMoreItems();
+if (getData) {
+    getData = false;
+    createMoreItems();
+} else {
+    return;
+}
 
 $(window).scroll(function() {
     // 判斷整體網頁的高度
@@ -114,4 +119,5 @@ function createMoreItems() {
         };
         getMoreRequest.send();
     }
+    getData = true;
 };
