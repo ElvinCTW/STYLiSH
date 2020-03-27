@@ -88,69 +88,38 @@ function onClick() {
             alert('資料有誤');
             return;
         }
-        const prime = result.card.prime;
-        // alert('getPrime 成功: ' + prime);
-
-        // Assemble API Object
-
-        // Get info from input boxes
-        const shippingValue = 'delivery';
-        const paymentValue = 'credit_card';
-        const subtotalValue = 3211;
-        const freightValue = 11;
-        const totalValue = 3222;
-        // Recipient Object info
-        const nameValue = '用戶一';
-        const phoneValue = '0912345678';
-        const emailValue = 'test@test.com';
-        const addressValue = '台北';
-        const timeValue = '晚上';
-        // List_item Object value
-        const product_idValue = sendbackJSON_Outside.data.id;
-        const product_nameValue = sendbackJSON_Outside.data.title;
-        const product_priceValue = sendbackJSON_Outside.data.price;
-        const product_colorValue = sendbackJSON_Outside.data.colors[0].name;
-        const product_colorcodeValue = sendbackJSON_Outside.data.colors[0].code;
-        const product_sizeValue = sendbackJSON_Outside.data.sizes[0];
-        const product_qtyValue = 2;
 
         // eslint-disable-next-line camelcase
         const sendAPI_Object = {
-            prime: prime,
+            prime: result.card.prime,
             order: {
-                shipping: shippingValue,
-                payment: paymentValue,
-                subtotal: subtotalValue,
-                freight: freightValue,
-                total: totalValue,
+                shipping: 'delivery',
+                payment: 'credit_card',
+                subtotal: 3321,
+                freight: 11,
+                total: 3222,
             },
-            list: [],
+            list: [{
+                id: sendbackJSON_Outside.data.id,
+                name: sendbackJSON_Outside.data.title,
+                price: sendbackJSON_Outside.data.price,
+                color: {
+                    code: sendbackJSON_Outside.data.colors[0].code,
+                    name: sendbackJSON_Outside.data.colors[0].name,
+                },
+                size: sendbackJSON_Outside.data.sizes[0],
+                qty: 2,
+            }],
         };
 
         // Put info into order object
         sendAPI_Object.order.recipient = {
-            name: nameValue,
-            phone: phoneValue,
-            email: emailValue,
-            address: addressValue,
-            time: timeValue,
+            name: '用戶一',
+            phone: '0912345678',
+            email: 'test2@test.com',
+            address: '台北',
+            time: '晚上',
         };
-
-        // Put info into listItem object
-        const listItem = {
-            id: product_idValue,
-            name: product_nameValue,
-            price: product_priceValue,
-            color: {
-                code: product_colorcodeValue,
-                name: product_colorValue,
-            },
-            size: product_sizeValue,
-            qty: product_qtyValue,
-        };
-
-        // Add item into list
-        sendAPI_Object.list.push(listItem);
 
         // Make checkout request
         const checkoutRequest = new XMLHttpRequest();

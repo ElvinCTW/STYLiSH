@@ -106,13 +106,10 @@ const query = {
         for (const value of insertDataValuesArr) {
             prototypeValueString += `, ${value}`;
         };
-        // console.log(prototypeKeyString);
-        // console.log(prototypeValueString);
         // Set inside SQL string
         const insertKeyString = prototypeKeyString.slice(2);
         const insertValueString = prototypeValueString.slice(2);
         const SQL = `INSERT INTO ${table} (${insertKeyString}) VALUES (${insertValueString})`;
-        console.log(SQL);
         const insertPromise = new Promise((resolove, reject) => {
             pool.query(SQL, (err, result, fileds) => {
                 resolove(result);

@@ -45,16 +45,14 @@ router.post('/checkout', async (req, res, cb) => {
             },
         });
         orderObj.user_id = userinfoResult.data.data.id;
-        console.log(userinfoResult);
     } else {
         orderObj.token = '"does not login"';
-        orderObj.user_id = 35;
+        orderObj.user_id = 39;
     }
 
     // Insert order into stylish_order table
     const stylish_orderDB_Result = await query.insertTable('stylish_order', orderObj);
     console.log(stylish_orderDB_Result);
-
     // Connect with tappay server and get feedback
     const tappayPostData = {
         'prime': req.body.prime,
@@ -63,7 +61,7 @@ router.post('/checkout', async (req, res, cb) => {
         'amount': req.body.order.total,
         'currency': 'TWD',
         'order_number': stylish_orderDB_Result.insertId,
-        'bank_transaction_id': `STYLISHELVIN${stylish_orderDB_Result.insertId}`,
+        'bank_transaction_id': `STYLISH${Math.floor(Math.random()+1)*100}${stylish_orderDB_Result.insertId}`,
         'details': 'TapPay Test',
         'cardholder': {
             'phone_number': req.body.order.recipient.phone,
@@ -73,7 +71,7 @@ router.post('/checkout', async (req, res, cb) => {
         },
     };
 
-    console.log(tappayPostData);
+    console.log(tappayPostData.bank_transaction_id);
 
     const tappayPostOption = {
         host: 'sandbox.tappaysdk.com',
@@ -92,7 +90,7 @@ router.post('/checkout', async (req, res, cb) => {
         response.on('data', async function (body) {
             // Put data from tappay server into payment table
             tappayPostResultJSON = JSON.parse(body);
-
+            console.log(tappayPostResultJSON);
             // If pay error, send message back
             if (tappayPostResultJSON.status !== 0) {
 

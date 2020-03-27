@@ -27,8 +27,6 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage});
 
 router.get('/profile', async (req, res, cb) => {
-    console.log('test start');
-
     // Get token in headers
     const token = req.headers.authorization.split(' ')[1];
 
