@@ -20,9 +20,9 @@ productDetailRequest.onload = function(sendback) {
     sendbackJSON_Outside = sendbackJSON;
 
     // Set DOM values
-    document.getElementById('main-content-title-info').textContent = sendbackJSON.data.title;
-    document.getElementById('main-content-id-info').textContent = `ID : ${sendbackJSON.data.id}`;
-    document.getElementById('main-content-price-info').textContent = `TWD. ${sendbackJSON.data.price}`;
+    document.getElementById('main-content-title-info').textContent = sendbackJSON.data.title || '查無此商品';
+    document.getElementById('main-content-id-info').textContent = `ID : ${sendbackJSON.data.id || '查無此商品'}`;
+    document.getElementById('main-content-price-info').textContent = `TWD. ${sendbackJSON.data.price || 0}`;
 
     // Set Color and Sizes
     // Colors
@@ -60,6 +60,11 @@ productDetailRequest.onload = function(sendback) {
     const mainImage = document.createElement('img');
     mainImage.src = sendbackJSON.data.main_image;
     mainImageDiv.appendChild(mainImage);
+    // Set story
+    const storyDiv = document.getElementById('product-0-text');
+    const storyText = document.createElement('p');
+    storyText.textContent = sendbackJSON.data.story;
+    storyDiv.appendChild(storyText);
 
     const imageArray = document.getElementsByClassName('product-pic-info');
     for (let k = 0; k < sendbackJSON.data.images.length; k++) {
@@ -95,11 +100,11 @@ function onClick() {
         const freightValue = 11;
         const totalValue = 3222;
         // Recipient Object info
-        const nameValue = '活死人';
+        const nameValue = '用戶一';
         const phoneValue = '0912345678';
         const emailValue = 'test@test.com';
-        const addressValue = '發大財之都';
-        const timeValue = '黑夜降臨殺手現身';
+        const addressValue = '台北';
+        const timeValue = '晚上';
         // List_item Object value
         const product_idValue = sendbackJSON_Outside.data.id;
         const product_nameValue = sendbackJSON_Outside.data.title;
@@ -151,14 +156,13 @@ function onClick() {
         const checkoutRequest = new XMLHttpRequest();
         checkoutRequest.open('POST', '/api/V1.0/order/checkout', true);
 
-        // 发送合适的请求头信息
+        // Set request header
         checkoutRequest.setRequestHeader('Content-Type', 'application/json');
         if (localStorage.getItem('stylish_token')) {
             checkoutRequest.setRequestHeader('Authorization', 'Bearer ' + localStorage.getItem('stylish_token'));
         }
 
         checkoutRequest.onload = function(sendback) {
-            // 请求结束后,在此处写处理代码
             const sendbackJSON_fromCheckout = JSON.parse(sendback.target.response);
 
             if (sendbackJSON_fromCheckout.msg) {

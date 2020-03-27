@@ -96,7 +96,6 @@ router.get('/:type', findCache, async (req, res) => {
     } else if (productQueryResult.length === 6) { // productQueryResult.length === 3
         nextpage_value = currentPage_INT+1;
         responseObject.next_paging = nextpage_value;
-        // console.log(nextpage_value);
         // if total data amount is multiple of 3, next_paging of empty data situation will happen
     } else {
         console.error('Problem in generate next_paging part');
@@ -164,8 +163,6 @@ router.get('/:type', findCache, async (req, res) => {
 
         // 2. Put everything into object_WhichGoIntoDataArray
         if (productQueryResult[key].main_image) {
-            // Local : http://localhost:3000/ + url
-            // server : http://3.134.125.243/ + url
             object_WhichGoIntoDataArray.main_image = `https://d24ogzkheidvyy.cloudfront.net/${productQueryResult[key].main_image}`;
         }
 
@@ -177,7 +174,7 @@ router.get('/:type', findCache, async (req, res) => {
         }
     }
 
-    if (req.params.type === 'details' && req.query.id) {
+    if (req.params.type === 'details' && req.query.id && productQueryResult[0]) {
         client.setex(`${req.params.type}-${req.query.id}`, 3600, JSON.stringify(responseObject));
     }
 

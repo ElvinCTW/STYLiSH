@@ -66,10 +66,6 @@ function addVariants() {
         const guideDiv = document.getElementById('variantsLabel');
         guideDiv.textContent = '請輸入庫存量';
 
-        // const colorsInput = document.getElementById('colors');
-        // const colorsText = colorsInput.value;
-        // let colors = colorsText.split(',');
-
         // get color input
         const colorsInput = document.getElementById('colors');
         const colorsText = colorsInput.value;

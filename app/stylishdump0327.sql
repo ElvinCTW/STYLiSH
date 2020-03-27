@@ -35,7 +35,7 @@ CREATE TABLE `color` (
 
 LOCK TABLES `color` WRITE;
 /*!40000 ALTER TABLE `color` DISABLE KEYS */;
-INSERT INTO `color` VALUES ('08','98'),('1023','1203'),('2310','231'),('6986','876'),('black','000000'),('grey','AAAAAA'),('white','FFFFFF');
+INSERT INTO `color` VALUES ('08','98'),('1023','1203'),('2310','231'),('6986','876'),('black','000000'),('brown','80604D'),('grey','AAAAAA'),('navy','000080'),('red','FF0000'),('rose','E8909C'),('skyblue','87CEEB'),('tan','D2B48C'),('white','FFFFFF');
 /*!40000 ALTER TABLE `color` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ CREATE TABLE `note` (
 
 LOCK TABLES `note` WRITE;
 /*!40000 ALTER TABLE `note` DISABLE KEYS */;
-INSERT INTO `note` VALUES ('',NULL),('230',NULL),('310',NULL),('89',NULL),('99',NULL);
+INSERT INTO `note` VALUES ('',NULL),('230',NULL),('310',NULL),('89',NULL),('99',NULL),('請勿水洗',NULL),('請用四十度以下熱水清洗',NULL);
 /*!40000 ALTER TABLE `note` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,7 @@ CREATE TABLE `place` (
 
 LOCK TABLES `place` WRITE;
 /*!40000 ALTER TABLE `place` DISABLE KEYS */;
-INSERT INTO `place` VALUES ('2',NULL),('231',NULL),('7',NULL),('98',NULL),('台灣',NULL);
+INSERT INTO `place` VALUES ('2',NULL),('231',NULL),('7',NULL),('98',NULL),('中國',NULL),('台灣',NULL),('英國',NULL);
 /*!40000 ALTER TABLE `place` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,7 +217,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'test1','12',12301,'0','1577944543861','310','23012','11','2','1','210'),(2,'test2','12',12301,'0','1577944569828','310','23012','11','2','2','210'),(3,'test3','12',12301,'0','1577944595005','310','23012','11','2','3','210'),(4,'test4','12',12301,'0','1577944619680','310','23012','11','2','1','210'),(5,'test5','12',12301,'0','1577944642989','310','23012','11','2','2','210'),(6,'test6','12',12301,'0','1577944666234','310','23012','11','2','3','210'),(7,'紳士西裝三件組','高抗寒素材選用，保暖也時尚有型',5999,'男士的必備戰衣，紳士西裝三件組','1584079713328','','天蠶絲','請用冷水清洗或送洗','台灣','men','');
+INSERT INTO `product` VALUES (7,'紳士西裝三件組','高抗寒素材選用，保暖也時尚有型',5999,'男士的必備戰衣，紳士西裝三件組','1584079713328','','天蠶絲','請用冷水清洗或送洗','台灣','men',''),(8,'碎花小洋裝','夏天必備穿搭！',399,'夏天要到了，怎麼能沒有一件小洋裝！','1585301035425','請用四十度以下熱水清洗','棉、聚脂纖維','水洗','中國','women',''),(9,'藍色女裝襯衫','海的顏色！',399,'平時在城市中忙碌的你，穿上與大海的連結吧！','1585301168482','請用四十度以下熱水清洗','棉、聚脂纖維','水洗','中國','women',''),(10,'海灘亞麻帽','防曬黑神器！',399,'不想曬黑，又想維持清爽的造型？戴上一頂亞麻帽就對了！','1585301368034','請用四十度以下熱水清洗','亞麻','水洗','中國','accessories',''),(11,'紳士小帽','紳士的完成在於帽',499,'沒有一頂紳士小帽，別說你懂穿搭！','1585302826291','請勿水洗','羊毛','乾洗','中國','accessories',''),(12,'男士西裝上衣','商務人士首選',3999,'商務人士入門款必備海軍藍西裝！','1585303098835','請勿水洗','羊毛','乾洗','英國','men','');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -237,7 +237,7 @@ CREATE TABLE `product_color` (
   KEY `color_idx` (`color`),
   CONSTRAINT `color` FOREIGN KEY (`color`) REFERENCES `color` (`color`),
   CONSTRAINT `product_color_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +246,7 @@ CREATE TABLE `product_color` (
 
 LOCK TABLES `product_color` WRITE;
 /*!40000 ALTER TABLE `product_color` DISABLE KEYS */;
-INSERT INTO `product_color` VALUES (102,1,'2310'),(103,2,'2310'),(104,3,'2310'),(105,4,'2310'),(106,5,'2310'),(107,6,'2310'),(112,7,'white'),(113,7,'black'),(114,7,'grey');
+INSERT INTO `product_color` VALUES (112,7,'white'),(113,7,'black'),(114,7,'grey'),(115,8,'rose'),(116,9,'skyblue'),(117,10,'tan'),(118,11,'brown'),(119,12,'navy');
 /*!40000 ALTER TABLE `product_color` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `product_images` (
   PRIMARY KEY (`iamges_id`),
   KEY `images_product_idx` (`product_id`),
   CONSTRAINT `images_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `product_images` (
 
 LOCK TABLES `product_images` WRITE;
 /*!40000 ALTER TABLE `product_images` DISABLE KEYS */;
-INSERT INTO `product_images` VALUES (78,1,'1577944543863'),(79,1,'1577944543869'),(80,2,'1577944569830'),(81,2,'1577944569833'),(82,3,'1577944595006'),(83,3,'1577944595009'),(84,4,'1577944619682'),(85,4,'1577944619687'),(86,5,'1577944642990'),(87,5,'1577944642993'),(88,6,'1577944666235'),(89,6,'1577944666239'),(96,7,'1584079713335'),(97,7,'1584079713372');
+INSERT INTO `product_images` VALUES (96,7,'1584079713335'),(97,7,'1584079713372'),(98,8,'1585301035430'),(99,8,'1585301035456'),(100,9,'1585301168484'),(101,9,'1585301168489'),(102,10,'1585301368036'),(103,10,'1585301368040'),(104,11,'1585302826295'),(105,11,'1585302826326'),(106,12,'1585303098836'),(107,12,'1585303098873');
 /*!40000 ALTER TABLE `product_images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -293,7 +293,7 @@ CREATE TABLE `product_size` (
   KEY `size_idx` (`size`),
   CONSTRAINT `product_size_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   CONSTRAINT `size` FOREIGN KEY (`size`) REFERENCES `size` (`size`)
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,7 +302,7 @@ CREATE TABLE `product_size` (
 
 LOCK TABLES `product_size` WRITE;
 /*!40000 ALTER TABLE `product_size` DISABLE KEYS */;
-INSERT INTO `product_size` VALUES (139,1,'231023'),(140,2,'231023'),(141,3,'231023'),(142,4,'231023'),(143,5,'231023'),(144,6,'231023'),(149,7,'xs'),(150,7,'m'),(151,7,'l');
+INSERT INTO `product_size` VALUES (149,7,'xs'),(150,7,'m'),(151,7,'l'),(152,8,'xs'),(153,8,'s'),(154,8,'m'),(155,8,'l'),(156,9,'xs'),(157,9,'s'),(158,9,'m'),(159,9,'l'),(160,10,'m'),(161,11,'m'),(162,12,'s'),(163,12,'m'),(164,12,'l'),(165,12,'xl');
 /*!40000 ALTER TABLE `product_size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,7 +326,7 @@ CREATE TABLE `size` (
 
 LOCK TABLES `size` WRITE;
 /*!40000 ALTER TABLE `size` DISABLE KEYS */;
-INSERT INTO `size` VALUES ('098','89'),('123','023'),('231023','1023'),('876','78687'),('l','大'),('m','中'),('xs','特小');
+INSERT INTO `size` VALUES ('098','89'),('123','023'),('231023','1023'),('876','78687'),('l','大'),('m','中'),('s','小'),('xl','特大'),('xs','特小');
 /*!40000 ALTER TABLE `size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -388,7 +388,7 @@ CREATE TABLE `texture` (
 
 LOCK TABLES `texture` WRITE;
 /*!40000 ALTER TABLE `texture` DISABLE KEYS */;
-INSERT INTO `texture` VALUES ('03',NULL),('23012',NULL),('68',NULL),('89',NULL),('天蠶絲',NULL);
+INSERT INTO `texture` VALUES ('03',NULL),('23012',NULL),('68',NULL),('89',NULL),('亞麻',NULL),('天蠶絲',NULL),('棉、聚脂纖維',NULL),('羊毛',NULL);
 /*!40000 ALTER TABLE `texture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -412,7 +412,7 @@ CREATE TABLE `type` (
 
 LOCK TABLES `type` WRITE;
 /*!40000 ALTER TABLE `type` DISABLE KEYS */;
-INSERT INTO `type` VALUES ('1','women'),('2','men'),('3','accessories'),('men',NULL);
+INSERT INTO `type` VALUES ('1','women'),('2','men'),('3','accessories'),('accessories',NULL),('men',NULL),('women',NULL);
 /*!40000 ALTER TABLE `type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,7 +435,7 @@ CREATE TABLE `user` (
   `expired_time` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +444,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (37,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','發財種子','test@test.com',NULL,'d5cf9342fc7208faabc5bb01783ca9ed7e4e96577601eeb42bb31c5b5673efc6','1584078873301','3600');
+INSERT INTO `user` VALUES (37,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','發財種子','test@test.com',NULL,'17b529f089a1ffbc9fc43255b965f9c374b575bad838dc7cfa549b53092d5d46','1585289907864','3600'),(38,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','發財種子1','test1@test.com',NULL,'c39829fc46c149ce16eb4872bb9a05a9c14ca4ebe7034f7c283fdcfe20d5db45','1585289926246','3600');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -475,7 +475,7 @@ CREATE TABLE `variant` (
 
 LOCK TABLES `variant` WRITE;
 /*!40000 ALTER TABLE `variant` DISABLE KEYS */;
-INSERT INTO `variant` VALUES (1,'231023','2310',0),(2,'231023','2310',0),(3,'231023','2310',0),(4,'231023','2310',0),(5,'231023','2310',0),(6,'231023','2310',0),(7,'l','black',3),(7,'l','grey',3),(7,'l','white',3),(7,'m','black',3),(7,'m','grey',3),(7,'m','white',3),(7,'xs','black',3),(7,'xs','grey',3),(7,'xs','white',3);
+INSERT INTO `variant` VALUES (7,'l','black',3),(7,'l','grey',3),(7,'l','white',3),(7,'m','black',3),(7,'m','grey',3),(7,'m','white',3),(7,'xs','black',3),(7,'xs','grey',3),(7,'xs','white',3),(8,'l','rose',30),(8,'m','rose',30),(8,'s','rose',30),(8,'xs','rose',30),(9,'l','skyblue',50),(9,'m','skyblue',50),(9,'s','skyblue',50),(9,'xs','skyblue',50),(10,'m','tan',30),(11,'m','brown',0),(12,'l','navy',30),(12,'m','navy',30),(12,'s','navy',30),(12,'xl','navy',30);
 /*!40000 ALTER TABLE `variant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -499,7 +499,7 @@ CREATE TABLE `wash` (
 
 LOCK TABLES `wash` WRITE;
 /*!40000 ALTER TABLE `wash` DISABLE KEYS */;
-INSERT INTO `wash` VALUES ('0231',NULL),('08',NULL),('11',NULL),('68',NULL),('請用冷水清洗或送洗',NULL);
+INSERT INTO `wash` VALUES ('0231',NULL),('08',NULL),('11',NULL),('68',NULL),('乾洗',NULL),('水洗',NULL),('請用冷水清洗或送洗',NULL);
 /*!40000 ALTER TABLE `wash` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -512,4 +512,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-13 16:35:02
+-- Dump completed on 2020-03-27 18:01:31
