@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable max-len */
 let productAPI_URL = '/api/V1.0/products/';
+let getData = true;
 
 // Set query SQL
 if (location.search.split('=')[0] === '?type') {
@@ -19,14 +20,12 @@ if (location.search.split('=')[0] === '?type') {
     productAPI_URL += 'all';
 }
 let page = 0;
-// ajax
 
 if (getData) {
     getData = false;
     createMoreItems();
-} else {
-    return;
-}
+};
+// ajax
 
 $(window).scroll(function() {
     // 判斷整體網頁的高度
@@ -37,7 +36,10 @@ $(window).scroll(function() {
     $ScrollTop=$(this).scrollTop();
 
     if ($BodyHeight - ($ViewportHeight+$ScrollTop) < 30) {
-        createMoreItems();
+        if (getData) {
+            getData = false;
+            createMoreItems();
+        };
     };
 });
 
