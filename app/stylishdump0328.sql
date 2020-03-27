@@ -104,7 +104,7 @@ CREATE TABLE `order_items` (
   PRIMARY KEY (`item_id`),
   KEY `fk_order_items_stylish_order1_idx` (`order_id`),
   CONSTRAINT `fk_order_items_stylish_order1` FOREIGN KEY (`order_id`) REFERENCES `stylish_order` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,6 +113,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
+INSERT INTO `order_items` VALUES (86,109,9,'skyblue','xs',2),(87,110,12,'navy','s',2),(88,111,7,'white','xs',2),(89,112,12,'navy','s',2),(90,113,12,'navy','s',2),(91,114,12,'navy','s',2),(92,115,12,'navy','s',2),(93,116,12,'navy','s',2),(94,117,12,'navy','s',2),(95,118,12,'navy','s',2),(96,119,12,'navy','s',2),(97,120,12,'navy','s',2),(98,121,12,'navy','s',2);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +139,7 @@ CREATE TABLE `payment` (
   PRIMARY KEY (`payment_id`),
   KEY `fk_payment_stylish_order1_idx` (`order_id`),
   CONSTRAINT `fk_payment_stylish_order1` FOREIGN KEY (`order_id`) REFERENCES `stylish_order` (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,6 +148,7 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` VALUES (58,109,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'bb664c84e81ca1993f912b40e6b9b315dd4a207181d7ba38022eaabd21cbb80b'),(59,110,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'be6da521bc457948bcbc1a9356d7309053f69398c213d20b4774fdc173355ca4'),(60,111,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'fb55346446a070f1637af39c8116e98b273cf44a9e4e586641ed1654b65086bb'),(61,112,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2509cc14afbaa677ade408e9423d1465f7cfaf4cca57479f4af816bd2b7f66a2'),(62,113,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'eadcfd382005b752cc61e72fb99a42ce93d46d48463aa1493283eeaa3868fbd8'),(63,114,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'a88a8b0104f12e5c80d737540ca69ea0ca5b9a2e8ab63c2dd95ac4435b0c77c8'),(64,115,'Duplicate bank_transaction_id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'0ad29e05ca1782bfa9e0f3c3ba6ea9adab75c36dce812c2c434f176851951860'),(65,116,'Invalid bank transaction id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'59d8169fabd6da0b77b1157c77e61f5621e7ad0421bb274089067a1fde2bdd1b'),(66,117,'Invalid bank transaction id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'4a37addd4f6067474321b73b41e1df8e7de7f678bbba98e890b26b50cf4cbc4c'),(67,118,'Invalid bank transaction id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8e24d604490a2d2c344900c63fbcd9c0390dc415cfb00b84a7a4f94c69a4cbcf'),(68,119,'Invalid bank transaction id',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'c6658ecdda49cf8c880110869955977a04155b5ccc0986c4db29deaff8e6e949'),(69,120,'D20200327suHg9G','STYLISHE120','621385','4242','UNITED KINGDOM','424242','dee921560b074be7a860a6b44a80c21b','AppWorksSchool_CTBC','dbb9ebc8c2f50abf5321af4f117eeaa269becc2b67c37ba18945209bccd73568'),(70,121,'D20200327LNxWkq','STYLISH100121','012563','4242','UNITED KINGDOM','424242','dee921560b074be7a860a6b44a80c21b','AppWorksSchool_CTBC','f61de3b5e87be7e4cb72504d7b7dfebd1a4d9358efb38a7b070192aebdc57a8e');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +358,7 @@ CREATE TABLE `stylish_order` (
   UNIQUE KEY `order_id_UNIQUE` (`order_id`),
   KEY `fk_stylish_order_user1_idx` (`user_id`),
   CONSTRAINT `fk_stylish_order_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,6 +367,7 @@ CREATE TABLE `stylish_order` (
 
 LOCK TABLES `stylish_order` WRITE;
 /*!40000 ALTER TABLE `stylish_order` DISABLE KEYS */;
+INSERT INTO `stylish_order` VALUES (109,'delivery','credit_card','933afa9517afe3a94e937bb06d468fcace7810626caf8151e4158fb8e6ea457b','3211','11','3222','用戶一','0912345678','test@test.com','台北','晚上','not_yet',37),(110,'delivery','credit_card','933afa9517afe3a94e937bb06d468fcace7810626caf8151e4158fb8e6ea457b','3211','11','3222','用戶一','0912345678','test@test.com','台北','晚上','not_yet',37),(111,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3211','11','3222','用戶一','0912345678','test@test.com','台北','晚上','not_yet',39),(112,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(113,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(114,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(115,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(116,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(117,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(118,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(119,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','not_yet',39),(120,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','paid',39),(121,'delivery','credit_card','e0a503ccf823391b9757dad9d44dd6ec7ee9106bab4d37c002b05ca45f7493df','3321','11','3222','用戶一','0912345678','test2@test.com','台北','晚上','paid',39);
 /*!40000 ALTER TABLE `stylish_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,7 +438,7 @@ CREATE TABLE `user` (
   `expired_time` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -444,7 +447,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (37,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','發財種子','test@test.com',NULL,'17b529f089a1ffbc9fc43255b965f9c374b575bad838dc7cfa549b53092d5d46','1585289907864','3600'),(38,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','發財種子1','test1@test.com',NULL,'c39829fc46c149ce16eb4872bb9a05a9c14ca4ebe7034f7c283fdcfe20d5db45','1585289926246','3600');
+INSERT INTO `user` VALUES (37,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','用戶三','test@test.com',NULL,'fb47be8475d26ccf4157accccfd4fc52fcc19f2efaa0642e4a8e58269e58cbb6','1585315849100','3600'),(38,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','用戶二','test1@test.com',NULL,'cfcbb0fa50c802ce10e27e03ad394fc7687a08580549582b965b235faa6f2329','1585313184819','3600'),(39,'9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08','native','用戶一','test2@test.com',NULL,'8e9fc75ee84509de8fc7702947cac378f999e14998d48581478a887e3435527f','1585315787222','3600');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -512,4 +515,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-27 18:01:31
+-- Dump completed on 2020-03-27 21:31:43
