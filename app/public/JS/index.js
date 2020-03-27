@@ -118,8 +118,8 @@ function createMoreItems() {
                     $('#main').append(nomoreMessage);
                 }
             }
+            getData = true;
         };
         getMoreRequest.send();
     }
-    getData = true;
 };
