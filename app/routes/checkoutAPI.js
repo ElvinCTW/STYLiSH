@@ -37,7 +37,7 @@ router.post('/checkout', async (req, res, cb) => {
         const userinfoResult = await query.selectTableArr('user', 'token', orderObj.token);
         console.log('userinfoResult')
         console.log(userinfoResult)
-        if (!userinfoResult || userinfoResult.msg) {
+        if (!userinfoResult || userinfoResult.length === 0) {
             res.status(403).send({
                 status: 403,
                 msg: '請重新登入',
