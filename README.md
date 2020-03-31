@@ -1,26 +1,20 @@
 # STYLiSH
 
-<img src="./app/public/demo/intro.gif" alt="intro"/>
+STYLiSH, an e-commerce website built with Node/Express, MySQL, Redis and Nginx. Easily to deploy with Docker and Jenkins.
 
-STYLiSH, an e-commerce website built with neat database structure and capable of handling enormous requests.
-
-[Website URL](http://stylish.jia-boung.com/)
-
-## Table of Contents
+* Website URL
+  * http://stylish.jia-boung.com/
 
 ## Techniques
 
 ### Backend
 
-* Node.js
-* Express
+* Node/Express
 * Nginx
-* AWS EC2
-* AWS S3
-* Multer-S3
+* AWS EC2/S3
+* Multer
 * MySQL
 * Redis
-* NPM
 * PM2
 * Pug
 
@@ -31,7 +25,7 @@ STYLiSH, an e-commerce website built with neat database structure and capable of
 
 ### Development
 
-* EsLint
+* ESLint
 * Github
 * Artillery
 * MySQLWorkbench
