@@ -9,7 +9,6 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const https = require('https');
 const query = require('../model/sql');
-const axios = require('axios').default;
 app.use(bodyParser.urlencoded({ exetended: false }));
 app.use(bodyParser.json());
 
@@ -34,20 +33,19 @@ router.post('/checkout', async (req, res, cb) => {
     // Get token from header
     if (req.headers.authorization) {
         orderObj.token = `"${req.headers.authorization.split(' ')[1]}"`;
-        const userinfoResult = await axios({
-            method: 'get',
-            url: '/api/V1.0/user/profile',
-            proxy: {
-                port: 3000,
-            },
-            headers: {
-                Authorization: req.headers.authorization,
-            },
-        });
-        if (userinfoResult.errorMessage) {
-            alert('請重新登入');
+
+        const userinfoResult = await query.selectTableArr('user', 'token', orderObj.token);
+        console.log('userinfoResult')
+        console.log(userinfoResult)
+        if (!userinfoResult || userinfoResult.msg) {
+            res.status(403).send({
+                status: 403,
+                msg: '請重新登入',
+            });
+            return;
+        } else {
+            orderObj.user_id = userinfoResult[0].user_id;
         }
-        orderObj.user_id = userinfoResult.data.data.id;
     } else {
         orderObj.token = '"does not login"';
         orderObj.user_id = 39;
@@ -64,7 +62,7 @@ router.post('/checkout', async (req, res, cb) => {
         'amount': req.body.order.total,
         'currency': 'TWD',
         'order_number': stylish_orderDB_Result.insertId,
-        'bank_transaction_id': `STYLISH${Math.floor(Math.random()+1)*100}${stylish_orderDB_Result.insertId}`,
+        'bank_transaction_id': `STYLISH${Math.floor((Math.random()+1)*1000)}${stylish_orderDB_Result.insertId}`,
         'details': 'TapPay Test',
         'cardholder': {
             'phone_number': req.body.order.recipient.phone,
@@ -93,7 +91,6 @@ router.post('/checkout', async (req, res, cb) => {
         response.on('data', async function (body) {
             // Put data from tappay server into payment table
             tappayPostResultJSON = JSON.parse(body);
-            console.log(tappayPostResultJSON);
             // If pay error, send message back
             if (tappayPostResultJSON.status !== 0) {
 
