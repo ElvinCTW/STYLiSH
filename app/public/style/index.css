@@ -33,7 +33,9 @@ ul {
     object-fit: contain;
 }
 
-.left-nav-text {
+.left-nav-text,
+.sign-title,
+#main-profile-inside-sign label {
     width: 100px;
     height: 28px;
     font-family: PingFangTC;
@@ -45,6 +47,27 @@ ul {
     letter-spacing: 30px;
     text-align: left;
     color: var(--sepia);
+}
+
+.sign-title {
+  width: auto;
+  letter-spacing: 0;
+}
+
+#main-profile-inside-sign label {
+  letter-spacing: 0;
+  font-size: 16px;
+}
+
+#main-profile-inside-sign input {
+  margin-bottom: 1em;
+  min-height: 30px;
+  min-width: 200px;
+}
+
+#signin-btn,
+#signup-btn {
+  margin-bottom: 1em;
 }
 
 .left-nav-bar {
@@ -563,7 +586,7 @@ ul {
 
  #thankyou {
    width: 100%;
-   height: 500px;
+   min-height: calc(100vh - 255px); 
    display: flex;
    flex-direction: column;
    align-content: center;
@@ -625,4 +648,10 @@ a {
   border: 1px solid black;
   padding: 2px;
   margin : 0px 2px;
+}
+
+#main-profile-inside-sign {
+  min-height: calc(100vh - 255px);
+  justify-content: flex-start;
+  margin-left: 0px;
 }

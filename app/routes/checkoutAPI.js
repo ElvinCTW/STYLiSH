@@ -44,6 +44,9 @@ router.post('/checkout', async (req, res, cb) => {
                 Authorization: req.headers.authorization,
             },
         });
+        if (userinfoResult.errorMessage) {
+            alert('請重新登入');
+        }
         orderObj.user_id = userinfoResult.data.data.id;
     } else {
         orderObj.token = '"does not login"';

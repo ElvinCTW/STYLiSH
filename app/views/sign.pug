@@ -4,29 +4,28 @@ block content
     div(class='main-profile')
         div(id='main-profile-inside-sign' class='main-profile-inside')
             //- Show signIn signUp page
-            h1 請登入以繼續
+            p.sign-title 請登入以查閱用戶資料
             //- Set Inputs for ajax request
-            label Email :
+            label Email
             br
             input(type="email" id="email" name="email" placeholder="請輸入帳號" value='test@test.com')
             br
-            label Password :
+            label Password
             br
             input(type="password" id="password" name="password" placeholder="請輸入密碼" value='test')
             br
             div(id='div-for-signup' style='display: none;')
-                label Name :
-                br
+                label Name
                 input(type="text" id="name" name="name" placeholder="用戶暱稱" value='用戶一')
                 br
                 //- label 照片 :
                 //- br
                 //- input(type="file" id="picture" name="picture")
                 //- br
-            button(id='signin-btn') 我要登入
-            button(id='signup-btn' style='display: none;') 我要註冊
+            button(id='signin-btn') 登入
+            button(id='signup-btn' style='display: none;') 註冊
             br
-            button(id="switchBtn" onclick="signSwitch()") 註冊點這裡
+            button(id="switchBtn" onclick="signSwitch()") 註冊請點此
             br
             //- div(id='fb-sign-div')
             //-     span 臉書登入

@@ -67,15 +67,13 @@ if (!localStorage.getItem('stylish_token')) {
             signupBtn.style.display = '';
             signinBtn.style.display = 'none';
             signInstate = false;
-            switchBtn.textContent = '登入點這裡';
-            header.textContent = '你是不是想註冊';
+            switchBtn.textContent = '登入請點此';
         } else {
             signupDiv.style.display = 'none';
             signupBtn.style.display = 'none';
             signinBtn.style.display = '';
             signInstate = true;
-            switchBtn.textContent = '註冊點這裡';
-            header.textContent = '你是不是想登入';
+            switchBtn.textContent = '註冊請點此';
         }
     }
 

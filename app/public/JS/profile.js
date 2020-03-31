@@ -22,14 +22,13 @@ if (comeinToken) {
 
             // Build Profile Layout
             const user = sendbackJSON_Profile.data;
-            const signinMessage = $('<h1></h1>').text('You have signed in');
+            const signinMessage = $('<p />').attr('class', 'sign-title').text('您的用戶資料');
             const id = $('<p></p>').text('User ID : ' + user.id);
-            const provider = $('<p></p>').text('User Provider : ' + user.provider);
             const name = $('<p></p>').text('User Name : ' + user.name);
             const email = $('<p></p>').text('User Email : ' + user.email);
 
             // Insert
-            $('#clean-token-btn').before(signinMessage, id, provider, name, email);
+            $('#clean-token-btn').before(signinMessage, id, name, email);
         },
         error: (err)=>{
             $('#profile-errorMessage').text('Can not get profile : ' + err.responseJSON.errorMessage);
